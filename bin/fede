@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'fede'
+puts Fede.setup('teste_config', 'teste_dir')
