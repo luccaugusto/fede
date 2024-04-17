@@ -8,11 +8,29 @@ class Fede
       @config = parse_yaml site_config
       @data = parse_data data_directory
       @episode_list = []
+      load_episode_list
     end
 
     def generate
-      load_episode_list
       output_feed
+      puts "#{@config['podcast']['feed_file']} written!"
+    end
+
+    def append
+      last_episode_item = generate_episode_item @episode_list[-1]
+      feed_file = @config['podcast']['feed_file']
+      footer = "#{XMLNode.channel_footer}#{XMLFeed.footer}"
+      File.open(feed_file, 'r+') do |file|
+        # strip last 2 lines as they're always the closing channel and feed
+        # tags
+        # GOD THIS IS UGLY
+        # TODO: find position by reading up to the last 2 \n
+        file.seek(file.size - footer.length, IO::SEEK_SET)
+        file.write("#{last_episode_item.to_s(2)}#{footer}")
+      end
+      puts "Last episode appended to #{feed_file}!"
+    rescue Errno::ENOENT
+      puts "Cannot append if feed doesn't exist"
     end
 
     private
@@ -39,102 +57,105 @@ class Fede
       desc = @config['description']
       feed_file = @config['podcast']['feed_file']
 
-      feed = XMLFeed::Feed.new
-      channel = XMLFeed::XMLNode.new 'channel'
-      atom_link = XMLFeed::XMLNode.new 'atom:link'
+      feed = XMLFeed.new
+      channel = XMLNode.new 'channel'
+      atom_link = XMLNode.new 'atom:link'
       atom_link.set_propperty 'href', "#{base_url}/#{feed_file}"
       atom_link.set_propperty 'rel', 'self'
       atom_link.set_propperty 'type', 'application/rss+xml'
       channel.add_child atom_link
-      channel.add_child XMLFeed::XMLNode.new 'title', content: @config['title']
-      channel.add_child XMLFeed::XMLNode.new 'pubDate', content: @episode_list[0]['pub_date']
-      channel.add_child XMLFeed::XMLNode.new 'lastBuildDate', content: build_date
-      channel.add_child XMLFeed::XMLNode.new 'link', content: base_url
-      channel.add_child XMLFeed::XMLNode.new 'language', content: 'pt'
+      channel.add_child XMLNode.new 'title', content: @config['title']
+      channel.add_child XMLNode.new 'pubDate', content: @episode_list[0]['pub_date']
+      channel.add_child XMLNode.new 'lastBuildDate', content: build_date
+      channel.add_child XMLNode.new 'link', content: base_url
+      channel.add_child XMLNode.new 'language', content: 'pt'
       channel.add_child(
-        XMLFeed::XMLNode.new(
+        XMLNode.new(
           'copyright',
           cdata: true,
           content: "#{@config['title']} #{DateTime.now.year}, todos os direitos reservados."
         )
       )
-      channel.add_child XMLFeed::XMLNode.new('docs', content: base_url)
-      channel.add_child XMLFeed::XMLNode.new('managingEditor', content: "#{editor_email} (#{managing_editor})")
-      channel.add_child XMLFeed::XMLNode.new('itunes:summary', cdata: true, content: desc)
-      image = XMLFeed::XMLNode.new 'image'
-      image.add_child XMLFeed::XMLNode.new('url', content: "#{base_url}#{@config['logo']}")
-      image.add_child XMLFeed::XMLNode.new('title', content: @config['title'])
-      image.add_child XMLFeed::XMLNode.new('link', cdata: true, content: base_url)
+      channel.add_child XMLNode.new('docs', content: base_url)
+      channel.add_child XMLNode.new('managingEditor', content: "#{editor_email} (#{managing_editor})")
+      channel.add_child XMLNode.new('itunes:summary', cdata: true, content: desc)
+      image = XMLNode.new 'image'
+      image.add_child XMLNode.new('url', content: "#{base_url}#{@config['logo']}")
+      image.add_child XMLNode.new('title', content: @config['title'])
+      image.add_child XMLNode.new('link', cdata: true, content: base_url)
       channel.add_child image
-      channel.add_child XMLFeed::XMLNode.new('itunes:author', content: @config['podcast']['author'])
-      category = XMLFeed::XMLNode.new 'itunes:category'
+      channel.add_child XMLNode.new('itunes:author', content: @config['podcast']['author'])
+      category = XMLNode.new 'itunes:category'
       category.set_propperty 'text', 'Society &amp; Culture'
       channel.add_child category
-      channel.add_child XMLFeed::XMLNode.new('itunes:keywords', content: @config['podcast']['keywords'])
-      channel.add_child XMLFeed::XMLNode.new('itunes:image', propperties: { href: "#{base_url}#{@config['logo']}" })
-      channel.add_child XMLFeed::XMLNode.new('itunes:explicit', content: true)
-      owner = XMLFeed::XMLNode.new 'itunes:owner'
-      owner.add_child XMLFeed::XMLNode.new('itunes:email', content: @config['email'])
-      owner.add_child XMLFeed::XMLNode.new('itunes:name', content: @config['title'])
+      channel.add_child XMLNode.new('itunes:keywords', content: @config['podcast']['keywords'])
+      channel.add_child XMLNode.new('itunes:image', propperties: { href: "#{base_url}#{@config['logo']}" })
+      channel.add_child XMLNode.new('itunes:explicit', content: true)
+      owner = XMLNode.new 'itunes:owner'
+      owner.add_child XMLNode.new('itunes:email', content: @config['email'])
+      owner.add_child XMLNode.new('itunes:name', content: @config['title'])
       channel.add_child owner
-      channel.add_child(XMLFeed::XMLNode.new('description', content: desc, cdata: true))
+      channel.add_child(XMLNode.new('description', content: desc, cdata: true))
       channel.add_child(
-        XMLFeed::XMLNode.new(
+        XMLNode.new(
           'itunes:subtitle',
           content: @config['short_description'],
           cdata: true
         )
       )
-      channel.add_child XMLFeed::XMLNode.new('itunes:type', content: 'episodic')
-      channel.add_child XMLFeed::XMLNode.new('itunes:new-feed-url', content: "#{base_url}/#{feed_file}")
-      channel.add_children generate_episode_items
+      channel.add_child XMLNode.new('itunes:type', content: 'episodic')
+      channel.add_child XMLNode.new('itunes:new-feed-url', content: "#{base_url}/#{feed_file}")
+      channel.add_children generate_all_episode_items
 
       feed.nodes << channel
-      File.open(feed_file, 'w') { |f| f.write(feed) }
-      puts "#{feed_file} written!"
+      File.open(feed_file, 'w') { |file| file.write(feed) }
     end
 
     # TODO: add episode attribute names on config so they're dynamic
-    def generate_episode_items
-      episode_items = []
-      @episode_list.each do |episode|
+    def generate_episode_item(episode)
+      description = format_description episode['desc'], details: episode['detalhes'], indent_level: 3
+      subtitle = format_subtitle episode['desc']
+
+      current_item = XMLNode.new 'item'
+      current_item.add_child XMLNode.new('guid', content: "#{@config['url']}#{episode['url']}")
+      current_item.add_child XMLNode.new('title', content: episode['nome'])
+      current_item.add_child XMLNode.new('pubDate', content: episode['pub_date'])
+      current_item.add_child(XMLNode.new('link', cdata: true, content: "#{@config['url']}#{episode['url']}"))
+      current_item.add_child XMLNode.new(
+        'itunes:image',
+        propperties: { href: "#{@config['url']}#{episode['img']}" }
+      )
+      current_item.add_child XMLNode.new('description', cdata: true, content: description)
+      current_item.add_child(
+        XMLNode.new(
+          'enclosure',
+          propperties: {
+            length: episode_bytes_length(episode),
+            type: 'audio/mpeg',
+            url: "#{@config['url']}#{episode['url']}"
+          }
+        )
+      )
+      current_item.add_child XMLNode.new 'itunes:duration', content: episode_duration(episode)
+      current_item.add_child XMLNode.new 'itunes:explicit', content: true
+      current_item.add_child XMLNode.new(
+        'itunes:keywords',
+        content: @config['podcast']['keywords']
+      )
+      current_item.add_child XMLNode.new 'itunes:subtitle', content: subtitle, cdata: true
+      current_item.add_child XMLNode.new 'itunes:episodeType', content: 'full'
+
+      current_item
+    end
+
+    def generate_all_episode_items
+      @episode_list.map do |episode|
         next if episode['hide']
 
-        description = format_description(episode['desc'], details: episode['detalhes'], indent_level: 3)
-        subtitle = format_subtitle(episode['desc'])
-        current_item = XMLFeed::XMLNode.new 'item'
-        current_item.add_child XMLFeed::XMLNode.new('guid', content: "#{@config['url']}#{episode['url']}")
-        current_item.add_child XMLFeed::XMLNode.new('title', content: episode['nome'])
-        current_item.add_child XMLFeed::XMLNode.new('pubDate', content: episode['pub_date'])
-        current_item.add_child(XMLFeed::XMLNode.new('link', cdata: true, content: "#{@config['url']}#{episode['url']}"))
-        current_item.add_child XMLFeed::XMLNode.new(
-          'itunes:image',
-          propperties: { href: "#{@config['url']}#{episode['img']}" }
-        )
-        current_item.add_child XMLFeed::XMLNode.new('description', cdata: true, content: description)
-        current_item.add_child(
-          XMLFeed::XMLNode.new(
-            'enclosure',
-            propperties: {
-              length: episode_bytes_length(episode['url']),
-              type: 'audio/mpeg',
-              url: "#{@config['url']}#{episode['url']}"
-            }
-          )
-        )
-        current_item.add_child XMLFeed::XMLNode.new('itunes:duration', content: episode_duration(episode['url']))
-        current_item.add_child XMLFeed::XMLNode.new('itunes:explicit', content: true)
-        current_item.add_child XMLFeed::XMLNode.new(
-          'itunes:keywords',
-          content: @config['podcast']['keywords']
-        )
-        current_item.add_child XMLFeed::XMLNode.new('itunes:subtitle', content: subtitle, cdata: true)
-        current_item.add_child XMLFeed::XMLNode.new('itunes:episodeType', content: 'full')
-        episode_items << current_item
+        generate_episode_item(episode)
       rescue StandardError => e
         puts "Failed to generate item for #{episode['nome']}: #{e}"
       end
-      episode_items
     end
 
     def format_description(description, details: '', indent_level: 0, strip_all: false)
@@ -161,14 +182,18 @@ class Fede
       desc.length > 255 ? "#{desc.slice(0, 252)}..." : desc
     end
 
-    def episode_bytes_length(episode_path)
-      File.new("#{Dir.getwd}#{episode_path}").size
+    def episode_bytes_length(episode)
+      return episode['bytes_length'] if episode['bytes_length']
+
+      File.new("#{Dir.getwd}#{episode['url']}").size
     end
 
-    def episode_duration(episode_path)
+    def episode_duration(episode)
+      return episode['duration'] if episode['duration']
+
       raise 'FFMPEG not found. ffmpeg is needed to fech episode length' unless which('ffmpeg')
 
-      cmd = "ffmpeg -i #{Dir.getwd}#{episode_path} 2>&1 | grep 'Duration' | cut -d ' ' -f 4 | sed s/\.[0-9]*,//"
+      cmd = "ffmpeg -i #{Dir.getwd}#{episode['url']} 2>&1 | grep 'Duration' | cut -d ' ' -f 4 | sed s/\.[0-9]*,//"
       `#{cmd}`.strip!
     end
 
