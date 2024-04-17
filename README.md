@@ -7,20 +7,23 @@ I needed a nice, simple way to generate a RSS feed for my podcast [Papo De Sauna
 
 ## How it works
 This program takes 2 inputs: the config file and the data directory. The config file is a yaml file that specifies how your data is organized. The data directory is the directory that contains all your yaml data files. These data files can be a plain list of episodes, or organized in season blocks. See examples bellow.
+Additionally, a third parameter `mode` can be passed, being either `append` or `generate`. By default this program runs in generate mode, generating the feed from scratch. On append mode the last `n` items will be output to the end of the feed. This `n` value can be specified with the parameter, like so `append-3`.
 
 ### Running:
-`fede config.yml data`
++ Default execution: `fede example/config.yml example/data`
++ Append mode: `fede example/config.yml example/data append`
++ Multi Append mode: `fede example/config.yml example/data append-3 # this will append the last 3 items`
 
 ### Data dir:
 ```
-data
+example/data
 ├── monologues.yml
 └── seasons.yml
 ```
 
 ### Config example:
 ```yaml
-# config.yml
+# example/config.yml
 
 # everything is inside podcast so that it won't affect other configs
 # if you're using it with other application, like jekyll, allowing for
@@ -58,7 +61,7 @@ podcast:
 
 ### Episode data example:
 ```yaml
-# monologues.yml
+# examples/data/monologues.yml
 - episode_name: "First Monologue"
   pub_date: Tue, 08 Sep 2020 14:00:00 +0000
   yt-link: https://www.youtube.com/watch?v=dQw4w9WgXcQ
@@ -78,7 +81,7 @@ podcast:
 
 ### Season data example:
 ```yaml
-# seasons.yml
+# examples/data/seasons.yml
 - season_name: season 1
   episodes:
     - episode_name: Episode One
@@ -112,7 +115,7 @@ podcast:
 + Simple
 
 ## TODO:
-[ ] make a `append` mode, that will just put the last episode in the feed
-[ ] Use Rake to automate build
-[ ] Cover all fields with the data description configs
-[ ] Publish Gem
+- [x] make a `append` mode, that will just put the last episode in the feed
+- [ ] Use Rake to automate build
+- [ ] Cover all fields with the data description configs
+- [ ] Publish Gem
