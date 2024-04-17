@@ -3,17 +3,21 @@
 require 'fede'
 
 def show_help
-  puts 'Usage: fede <config_file> <data_dir>'
+  puts 'Usage: fede <config_file> <data_dir> [mode]'
+  puts '  modes:'
+  puts '    generate: generate feed from scratch'
+  puts '    append[-n]: appends the last -n items to the end of the feed, default is 1'
+  puts '        example: fede config_file data_dir append-3 (append last 3 items)'
   exit
 end
 
 show_help unless ARGV[0]
 show_help unless ARGV[1]
+mode = ARGV[2] || 'generate'
 
 case ARGV[0]
 when '-h'
   show_help
 end
 
-Fede.setup ARGV[0], ARGV[1]
-Fede.append
+Fede.setup config_file: ARGV[0], data_dir: ARGV[1], mode: mode

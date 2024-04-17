@@ -16,8 +16,11 @@ class Fede
       puts "#{@config['podcast']['feed_file']} written!"
     end
 
-    def append
-      last_episode_item = generate_episode_item @episode_list[-1]
+    def append(item_count = 1)
+      last_n_episodes = []
+      item_count.times.sort_by(&:-@).each do |i|
+        last_n_episodes << generate_episode_item(@episode_list[-i - 1])
+      end
       feed_file = @config['podcast']['feed_file']
       File.open(feed_file, 'r+') do |file|
         insert_position = Kernel.loop do
@@ -27,7 +30,8 @@ class Fede
         file.seek(insert_position, IO::SEEK_SET)
         footer = file.read
         file.seek(insert_position, IO::SEEK_SET)
-        file.write("#{last_episode_item.to_s(2)}#{footer}")
+        episodes_string = last_n_episodes.reduce('') { |prev, ep| "#{prev}#{ep.to_s(2)}" }
+        file.write("#{episodes_string}#{footer}")
       end
       puts "Last episode appended to #{feed_file}!"
     rescue Errno::ENOENT

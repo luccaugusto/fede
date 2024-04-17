@@ -21,6 +21,10 @@ data
 ### Config example:
 ```yaml
 # config.yml
+
+# everything is inside podcast so that it won't affect other configs
+# if you're using it with other application, like jekyll, allowing for
+# a single config file
 podcast:
   managing_editor: 'Lucca Augusto'
   editor_email: 'lucca@luccaaugusto.xyz'
@@ -109,4 +113,6 @@ podcast:
 
 ## TODO:
 [ ] make a `append` mode, that will just put the last episode in the feed
+[ ] Use Rake to automate build
 [ ] Cover all fields with the data description configs
+[ ] Publish Gem
