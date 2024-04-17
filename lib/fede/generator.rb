@@ -19,13 +19,14 @@ class Fede
     def append
       last_episode_item = generate_episode_item @episode_list[-1]
       feed_file = @config['podcast']['feed_file']
-      footer = "#{XMLNode.channel_footer}#{XMLFeed.footer}"
       File.open(feed_file, 'r+') do |file|
-        # strip last 2 lines as they're always the closing channel and feed
-        # tags
-        # GOD THIS IS UGLY
-        # TODO: find position by reading up to the last 2 \n
-        file.seek(file.size - footer.length, IO::SEEK_SET)
+        insert_position = Kernel.loop do
+          pos = file.pos
+          break pos if file.gets.include?('</channel>') || file.eof?
+        end
+        file.seek(insert_position, IO::SEEK_SET)
+        footer = file.read
+        file.seek(insert_position, IO::SEEK_SET)
         file.write("#{last_episode_item.to_s(2)}#{footer}")
       end
       puts "Last episode appended to #{feed_file}!"

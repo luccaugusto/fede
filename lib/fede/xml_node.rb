@@ -10,10 +10,6 @@ class Fede
       @children = []
     end
 
-    def self.channel_footer
-      "\t</channel>\n"
-    end
-
     def parent?
       !@children.empty?
     end
