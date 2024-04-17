@@ -1,0 +1,30 @@
+- season_name: season 1
+  episodes:
+    - episode_name: Episode One
+      duration: 01:39:22
+      bytes_length: 984321
+      pub_date: Mon, 29 Aug 2022 21:45:00 +0000
+      url: /episodes/episode-one.mp3
+      desc: First episode (boring) description,
+        this is the subtitle for the episode basically, no html tags here bro
+      yt-link: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+      deezer: https://deezer.page.link/EfgJJTVYMpVdnKXy5
+      spotify: https://open.spotify.com/track/4PTG3Z6ehGkBFwjybzWkR8?si=a9dd0641f9334fd9
+      img: /images/eps/episode-one.jpg
+      details: "Extra info, this plus the desc field is the full description for your
+        episode. Feel free to add <a> tags here, Fede will not strip those"
+- season_name: season 2
+  episodes:
+    - episode_name: Second Episode One
+      duration: 01:05:36
+      bytes_length: 1235432
+      pub_date: Tue, 30 Aug 2022 21:45:00 +0000
+      url: /episodes/second-episode-one.mp3
+      desc: "Second first episode (boring) description,
+        this is the subtitle for the episode basically, no html tags here bro"
+      yt-link: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+      deezer: https://deezer.page.link/EfgJJTVYMpVdnKXy5
+      spotify: https://open.spotify.com/track/4PTG3Z6ehGkBFwjybzWkR8?si=a9dd0641f9334fd9
+      img: /images/eps/second-episode-one.jpg
+      details: "Extra info, this plus the desc field is the full description for your
+        episode. Feel free to add <a> tags here, Fede will not strip those"

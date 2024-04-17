@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom' xmlns:cc='http://web.resource.org/cc/' xmlns:itunes='http://www.itunes.com/dtds/podcast-1.0.dtd' xmlns:media='http://search.yahoo.com/mrss/' xmlns:content='http://purl.org/rss/1.0/modules/content/' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+	<channel>
+		<atom:link href='/fede.xml' rel='self' type='application/rss+xml' />
+		<title></title>
+		<pubDate>Tue, 08 Sep 2020 14:00:00 +0000</pubDate>
+		<lastBuildDate>Tue, 16 Apr 2024 16:31:10 -0300</lastBuildDate>
+		<link></link>
+		<language>pt</language>
+		<copyright>
+			<![CDATA[ 2024, todos os direitos reservados.]]>
+		</copyright>
+		<docs></docs>
+		<managingEditor>lucca@luccaaugusto.xyz (Lucca Augusto)</managingEditor>
+		<itunes:summary>
+			<![CDATA[]]>
+		</itunes:summary>
+		<image>
+			<url></url>
+			<title></title>
+			<link>
+				<![CDATA[]]>
+			</link>
+		</image>
+		<itunes:author>Papo De Sauna</itunes:author>
+		<itunes:category text='Society &amp; Culture' />
+		<itunes:keywords>sauna, entretenimento, humor, filosofia</itunes:keywords>
+		<itunes:image href='' />
+		<itunes:explicit>true</itunes:explicit>
+		<itunes:owner>
+			<itunes:email></itunes:email>
+			<itunes:name></itunes:name>
+		</itunes:owner>
+		<description>
+			<![CDATA[]]>
+		</description>
+		<itunes:subtitle>
+			<![CDATA[]]>
+		</itunes:subtitle>
+		<itunes:type>episodic</itunes:type>
+		<itunes:new-feed-url>/fede.xml</itunes:new-feed-url>
+		<item>
+			<guid>/monologos/first-monologue.mp3</guid>
+			<title></title>
+			<pubDate>Tue, 08 Sep 2020 14:00:00 +0000</pubDate>
+			<link>
+				<![CDATA[/monologos/first-monologue.mp3]]>
+			</link>
+			<itunes:image href='' />
+			<description>
+				<![CDATA[This is our first monologue, pretty cool if you ask me :)]]>
+			</description>
+			<enclosure length='42069' type='audio/mpeg' url='/monologos/first-monologue.mp3' />
+			<itunes:duration>1780</itunes:duration>
+			<itunes:explicit>true</itunes:explicit>
+			<itunes:keywords>sauna, entretenimento, humor, filosofia</itunes:keywords>
+			<itunes:subtitle>
+				<![CDATA[This is our first monologue, pretty cool if you ask me :)]]>
+			</itunes:subtitle>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<guid>/monologos/first-monologue.mp3</guid>
+			<title></title>
+			<pubDate>Tue, 15 Sep 2020 14:00:00 +0000</pubDate>
+			<link>
+				<![CDATA[/monologos/first-monologue.mp3]]>
+			</link>
+			<itunes:image href='' />
+			<description>
+				<![CDATA[This is our second monologue, extra extra cool all the cool kids are saying :)]]>
+			</description>
+			<enclosure length='321413' type='audio/mpeg' url='/monologos/first-monologue.mp3' />
+			<itunes:duration>2520</itunes:duration>
+			<itunes:explicit>true</itunes:explicit>
+			<itunes:keywords>sauna, entretenimento, humor, filosofia</itunes:keywords>
+			<itunes:subtitle>
+				<![CDATA[This is our second monologue, extra extra cool all the cool kids are saying :)]]>
+			</itunes:subtitle>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<guid>/episodes/episode-one.mp3</guid>
+			<title></title>
+			<pubDate>Mon, 29 Aug 2022 21:45:00 +0000</pubDate>
+			<link>
+				<![CDATA[/episodes/episode-one.mp3]]>
+			</link>
+			<itunes:image href='/images/eps/episode-one.jpg' />
+			<description>
+				<![CDATA[First episode (boring) description, this is the subtitle for the episode basically, no html tags here bro]]>
+			</description>
+			<enclosure length='984321' type='audio/mpeg' url='/episodes/episode-one.mp3' />
+			<itunes:duration>5962</itunes:duration>
+			<itunes:explicit>true</itunes:explicit>
+			<itunes:keywords>sauna, entretenimento, humor, filosofia</itunes:keywords>
+			<itunes:subtitle>
+				<![CDATA[First episode (boring) description, this is the subtitle for the episode basically, no html tags here bro]]>
+			</itunes:subtitle>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<guid>/episodes/second-episode-one.mp3</guid>
+			<title></title>
+			<pubDate>Tue, 30 Aug 2022 21:45:00 +0000</pubDate>
+			<link>
+				<![CDATA[/episodes/second-episode-one.mp3]]>
+			</link>
+			<itunes:image href='/images/eps/second-episode-one.jpg' />
+			<description>
+				<![CDATA[Second first episode (boring) description, this is the subtitle for the episode basically, no html tags here bro]]>
+			</description>
+			<enclosure length='1235432' type='audio/mpeg' url='/episodes/second-episode-one.mp3' />
+			<itunes:duration>3936</itunes:duration>
+			<itunes:explicit>true</itunes:explicit>
+			<itunes:keywords>sauna, entretenimento, humor, filosofia</itunes:keywords>
+			<itunes:subtitle>
+				<![CDATA[Second first episode (boring) description, this is the subtitle for the episode basically, no html tags here bro]]>
+			</itunes:subtitle>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,15 @@
+podcast:
+  managing_editor: 'Lucca Augusto'
+  editor_email: 'lucca@luccaaugusto.xyz'
+  datetime_format_string: '%a, %d %b %Y %H:%M:%S %z'
+  author: 'Papo De Sauna'
+  language: 'pt-BR'
+  keywords: "sauna, entretenimento, humor, filosofia"
+  feed_file: 'fede.xml'
+  episode_data:
+    - monologues
+  season_data:
+    - seasons
+  episode_name_attribute: episode_name
+  season_name_attribute: season_name
+  season_episode_list_attribute: episodes
