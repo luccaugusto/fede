@@ -1,4 +1,19 @@
 #!/usr/bin/env ruby
 
 require 'fede'
-puts Fede.setup('teste_config', 'teste_dir')
+
+def show_help
+  puts 'Usage: fede <config_file> <data_dir>'
+  exit
+end
+
+show_help unless ARGV[0]
+show_help unless ARGV[1]
+
+case ARGV[0]
+when '-h'
+  show_help
+end
+
+Fede.setup ARGV[0], ARGV[1]
+Fede.append

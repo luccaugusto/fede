@@ -1,6 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'fede'
   s.version     = '0.0.0'
+  s.executables << 'fede'
   s.summary     = 'XML from yaml'
   s.description = 'Very Simple XML feed generator from yaml data files'
   s.authors     = ['Lucca Augusto']
