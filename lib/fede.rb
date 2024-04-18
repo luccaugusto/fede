@@ -1,5 +1,5 @@
 class Fede
-  def self.setup(config_file:, data_dir:, mode:)
+  def self.run(config_file:, data_dir:, mode:)
     @generator = Fede::FeedGenerator.new config_file, data_dir
     if mode.include? 'append'
       append mode
@@ -10,6 +10,8 @@ class Fede
     else
       puts "Invalid mode #{mode}. Valid modes are 'generate' or 'append'"
     end
+  rescue StandardError => e
+    puts e
   end
 
   def self.append_available

@@ -76,7 +76,12 @@ class Fede
     end
 
     def get_setting(setting_name)
-      @config['podcast'][setting_name] || @config[setting_name]
+      setting = @config['podcast'][setting_name] || @config[setting_name]
+      if setting.nil?
+        raise StandardError, "Error: setting #{setting_name} is not defined in the config file, cannot continue"
+      end
+
+      setting
     end
 
     def output_feed
@@ -204,6 +209,7 @@ class Fede
         # strip rest of html tags (a tags are allowed)
         description.gsub!(%r{<[^a][^a]/?[^>]+>}, '')
       end
+      description.gsub!(" \n", "\n")
       description.strip
     end
 

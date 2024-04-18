@@ -21,4 +21,4 @@ when '-h'
   show_help
 end
 
-Fede.setup config_file: ARGV[0], data_dir: ARGV[1], mode: mode
+Fede.run config_file: ARGV[0], data_dir: ARGV[1], mode: mode

@@ -1,6 +1,7 @@
 Gem::Specification.new do |s|
+  s.required_ruby_version = '>= 3.0'
   s.name        = 'fede'
-  s.version     = '0.1.0'
+  s.version     = '0.1.1'
   s.summary     = 'XML from yaml'
   s.description = 'Very Simple XML feed generator from yaml data files'
   s.authors     = ['Lucca Augusto']
@@ -10,11 +11,4 @@ Gem::Specification.new do |s|
   s.executables   = all_files.grep(%r{^bin/}) { |f| File.basename(f) }
   s.homepage    = 'https://github.com/luccaugusto/fede'
   s.license     = 'MIT'
-
-  s.metadata    = {
-    'source_code_uri' => 'https://github.com/luccaugusto/fede',
-    'bug_tracker_uri' => 'https://github.com/luccaugusto/fede/issues',
-    'changelog_uri' => 'https://github.com/luccaugusto/fede/releases',
-    'homepage_uri' => s.homepage
-  }
 end

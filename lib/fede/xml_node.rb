@@ -66,7 +66,7 @@ class Fede
     end
 
     def tag_close
-      parent? || @content ? "</#{@tag_name}>\n" : "/>\n"
+      parent? || @content ? "</#{@tag_name}>\n" : " />\n"
     end
 
     def to_s(indent_level = 0)
