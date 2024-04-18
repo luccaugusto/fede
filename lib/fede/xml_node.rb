@@ -39,16 +39,38 @@ class Fede
       end
     end
 
-    def to_s(indent_level = 1)
-      result_str = "#{"\t" * indent_level}#{open_tag(indent_level + 1)}"
-      if parent?
-        result_str += "\n"
-        @children.each { |child| result_str += child.to_s(indent_level + 1) }
-        result_str += "#{"\t" * indent_level}</#{@tag_name}>"
-      elsif @propperties.empty?
-        result_str += "#{@content}#{@cdata ? "]]>\n#{"\t" * indent_level}" : ''}</#{@tag_name}>"
+    def prop_string
+      return '' if @propperties.empty?
+
+      @propperties.reduce('') { |prev, values| "#{prev} #{values[0]}='#{values[1]}'" }
+    end
+
+    def children_string(indent_level)
+      @children.reduce('') { |prev, value| "#{prev}#{value.to_s indent_level}" }
+    end
+
+    def tag_open
+      "<#{@tag_name}#{prop_string}"
+    end
+
+    def tag_middle(indent_level)
+      return '' unless parent? || @content
+
+      if @cdata
+        ">\n#{"\t" * (indent_level + 1)}<![CDATA[#{@content}]]>\n#{"\t" * indent_level}"
+      elsif parent?
+        ">\n#{children_string(indent_level + 1)}#{"\t" * indent_level}"
+      else
+        ">#{@content}"
       end
-      "#{result_str}\n"
+    end
+
+    def tag_close
+      parent? || @content ? "</#{@tag_name}>\n" : "/>\n"
+    end
+
+    def to_s(indent_level = 0)
+      "#{"\t" * indent_level}#{tag_open}#{tag_middle(indent_level)}#{tag_close}"
     end
   end
 end
