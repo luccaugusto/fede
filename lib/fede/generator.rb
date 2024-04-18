@@ -196,8 +196,8 @@ class Fede
     def format_description(description, details: '', indent_level: 0, strip_all: false)
       indentation = "\t" * indent_level
       description = "#{description}\n#{indentation}#{details}".gsub '</br>', "\n#{indentation}"
-      description.gsub! '<p>', ''
-      description.gsub! '</p>', "\n#{indentation}"
+      description.gsub! '<p>', "\n#{indentation}"
+      description.gsub! '</p>', ''
       description.gsub! '<ul>', ''
       description.gsub! '<li>', "\n#{indentation} + "
       description.gsub! '</li>', ''

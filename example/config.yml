@@ -27,7 +27,7 @@ podcast:
   keywords: "sauna, entertainment, comedy, philosophy"
 
   # output feed to this file in the current directory
-  feed_file: 'fede.xml'
+  feed_file: 'example.xml'
 
   # specify in episode_data and season_data which files
   # in the <data> dir will be parsed
