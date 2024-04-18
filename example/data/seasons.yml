@@ -15,7 +15,12 @@
         this is the subtitle for the episode basically, no html tags here bro
       img: /images/eps/episode-one.jpg
       details: "Extra info, this plus the desc field is the full description for your
-        episode. Feel free to add <a> tags here, Fede will not strip those"
+        episode. Feel free to add <a>tags</a> here, Fede will not strip those</br>
+        br tags are converted to new lines</br>
+        <ul>
+        <li>tags become +</li>
+        <li>check this example in the feed</li>
+        </ul>"
 
 - season_name: season 2
   episodes:

@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom' xmlns:cc='http://web.resource.org/cc/' xmlns:itunes='http://www.itunes.com/dtds/podcast-1.0.dtd' xmlns:media='http://search.yahoo.com/mrss/' xmlns:content='http://purl.org/rss/1.0/modules/content/' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
 	<channel>
-		<atom:link href='https://pds.luccaaugusto.xyz/fede.xml' rel='self' type='application/rss+xml'/>
-		<title>Sauna Talks Website</title>
+		<atom:link href='https://pds.luccaaugusto.xyz/fede.xml' rel='self' type='application/rss+xml' />
+		<title>Sauna Talks</title>
 		<pubDate>Tue, 08 Sep 2020 14:00:00 +0000</pubDate>
-		<lastBuildDate>Wed, 17 Apr 2024 16:53:26 -0300</lastBuildDate>
+		<lastBuildDate>Thu, 18 Apr 2024 11:06:52 -0300</lastBuildDate>
 		<link>https://pds.luccaaugusto.xyz</link>
 		<language>pt</language>
 		<copyright>
-			<![CDATA[Sauna Talks Website 2024, all rights reserved.]]>
+			<![CDATA[Sauna Talks 2024, all rights reserved.]]>
 		</copyright>
 		<docs>https://pds.luccaaugusto.xyz</docs>
 		<managingEditor>lucca@luccaaugusto.xyz (Lucca Augusto)</managingEditor>
@@ -17,19 +17,19 @@
 		</itunes:summary>
 		<image>
 			<url>https://pds.luccaaugusto.xyz/images/pds-logo.jpg</url>
-			<title>Sauna Talks Website</title>
+			<title>Sauna Talks</title>
 			<link>
 				<![CDATA[https://pds.luccaaugusto.xyz]]>
 			</link>
 		</image>
 		<itunes:author>Papo De Sauna</itunes:author>
-		<itunes:category text='Society &amp; Culture'/>
+		<itunes:category text='Society &amp; Culture' />
 		<itunes:keywords>sauna, entertainment, comedy, philosophy</itunes:keywords>
-		<itunes:image href='https://pds.luccaaugusto.xyz/images/pds-logo.jpg'/>
+		<itunes:image href='https://pds.luccaaugusto.xyz/images/pds-logo.jpg' />
 		<itunes:explicit>true</itunes:explicit>
 		<itunes:owner>
 			<itunes:email>opapodesauna@gmail.com</itunes:email>
-			<itunes:name>Sauna Talks Website</itunes:name>
+			<itunes:name>Sauna Talks</itunes:name>
 		</itunes:owner>
 		<description>
 			<![CDATA[In the Sauna, part of the Sauna. In the Sauna, part of the Sauna. In the Sauna, part of the Sauna. In the Sauna, part of the Sauna. In the Sauna...]]>
@@ -46,11 +46,11 @@
 			<link>
 				<![CDATA[https://pds.luccaaugusto.xyz/monologos/first-monologue.mp3]]>
 			</link>
-			<itunes:image href='https://pds.luccaaugusto.xyz/images/pds-logo.jpg'/>
+			<itunes:image href='https://pds.luccaaugusto.xyz/images/pds-logo.jpg' />
 			<description>
 				<![CDATA[This is our first monologue, pretty cool if you ask me :)]]>
 			</description>
-			<enclosure length='42069' type='audio/mpeg' url='https://pds.luccaaugusto.xyz/monologos/first-monologue.mp3'/>
+			<enclosure length='42069' type='audio/mpeg' url='https://pds.luccaaugusto.xyz/monologos/first-monologue.mp3' />
 			<itunes:duration>1780</itunes:duration>
 			<itunes:explicit>true</itunes:explicit>
 			<itunes:keywords>sauna, entertainment, comedy, philosophy</itunes:keywords>
@@ -66,11 +66,11 @@
 			<link>
 				<![CDATA[https://pds.luccaaugusto.xyz/monologos/second-monologue.mp3]]>
 			</link>
-			<itunes:image href='https://pds.luccaaugusto.xyz/images/pds-logo.jpg'/>
+			<itunes:image href='https://pds.luccaaugusto.xyz/images/pds-logo.jpg' />
 			<description>
 				<![CDATA[This is our second monologue, extra extra cool all the cool kids are saying :)]]>
 			</description>
-			<enclosure length='321413' type='audio/mpeg' url='https://pds.luccaaugusto.xyz/monologos/second-monologue.mp3'/>
+			<enclosure length='321413' type='audio/mpeg' url='https://pds.luccaaugusto.xyz/monologos/second-monologue.mp3' />
 			<itunes:duration>2520</itunes:duration>
 			<itunes:explicit>true</itunes:explicit>
 			<itunes:keywords>sauna, entertainment, comedy, philosophy</itunes:keywords>
@@ -86,12 +86,16 @@
 			<link>
 				<![CDATA[https://pds.luccaaugusto.xyz/episodes/episode-one.mp3]]>
 			</link>
-			<itunes:image href='https://pds.luccaaugusto.xyz/images/eps/episode-one.jpg'/>
+			<itunes:image href='https://pds.luccaaugusto.xyz/images/eps/episode-one.jpg' />
 			<description>
 				<![CDATA[First episode (boring) description, this is the subtitle for the episode basically, no html tags here bro
-			Extra info, this plus the desc field is the full description for your episode. Feel free to add <a> tags here, Fede will not strip those]]>
+			Extra info, this plus the desc field is the full description for your episode. Feel free to add <a>tags</a> here, Fede will not strip those
+			 br tags are converted to new lines
+			 
+			 + tags become +
+			 + check this example in the feed]]>
 			</description>
-			<enclosure length='984321' type='audio/mpeg' url='https://pds.luccaaugusto.xyz/episodes/episode-one.mp3'/>
+			<enclosure length='984321' type='audio/mpeg' url='https://pds.luccaaugusto.xyz/episodes/episode-one.mp3' />
 			<itunes:duration>5962</itunes:duration>
 			<itunes:explicit>true</itunes:explicit>
 			<itunes:keywords>sauna, entertainment, comedy, philosophy</itunes:keywords>
@@ -107,12 +111,12 @@
 			<link>
 				<![CDATA[https://pds.luccaaugusto.xyz/episodes/second-episode-one.mp3]]>
 			</link>
-			<itunes:image href='https://pds.luccaaugusto.xyz/images/eps/second-episode-one.jpg'/>
+			<itunes:image href='https://pds.luccaaugusto.xyz/images/eps/second-episode-one.jpg' />
 			<description>
 				<![CDATA[Second first episode (boring) description, this is the subtitle for the episode basically, no html tags here bro
 			Extra info, this plus the desc field is the full description for your episode. Feel free to add <a> tags here, Fede will not strip those]]>
 			</description>
-			<enclosure length='1235432' type='audio/mpeg' url='https://pds.luccaaugusto.xyz/episodes/second-episode-one.mp3'/>
+			<enclosure length='1235432' type='audio/mpeg' url='https://pds.luccaaugusto.xyz/episodes/second-episode-one.mp3' />
 			<itunes:duration>3936</itunes:duration>
 			<itunes:explicit>true</itunes:explicit>
 			<itunes:keywords>sauna, entertainment, comedy, philosophy</itunes:keywords>

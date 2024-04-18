@@ -156,6 +156,6 @@ podcast:
 
 ## TODO:
 - [x] make a `append` mode, that will just put the last episode in the feed
-- [ ] Use Rake to automate build
 - [X] Cover all fields with the data description configs
-- [ ] Publish Gem
+- [X] Publish Gem
+- [ ] Use Rake to automate build
