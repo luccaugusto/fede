@@ -1,9 +1,13 @@
+# these are all the required attributes for an episode to be valid
+#
+# bytes_length and duration are optional if you have ffmpeg and the
+# episode files at runtime. If you're running this in a CICD pipeline
+# chances are you don't, so it's more flexible to just use these
+# attributes here
 - episode_name: "First Monologue"
   duration: 00:29:40
   bytes_length: 42069
   pub_date: Tue, 08 Sep 2020 14:00:00 +0000
-  yt-link: https://www.youtube.com/watch?v=dQw4w9WgXcQ
-  igtv-link: https://www.instagram.com/tv/420_wTF69yo/
   url: /monologos/first-monologue.mp3
   desc: "This is our first monologue,
     pretty cool if you ask me :)"
@@ -12,8 +16,6 @@
   duration: 00:42:00
   bytes_length: 321413
   pub_date: Tue, 15 Sep 2020 14:00:00 +0000
-  yt-link: https://www.youtube.com/watch?v=dQw4w9WgXcQ
-  igtv-link: https://www.instagram.com/tv/420_wTF69yo/
-  url: /monologos/first-monologue.mp3
+  url: /monologos/second-monologue.mp3
   desc: "This is our second monologue, extra extra cool
     all the cool kids are saying :)"

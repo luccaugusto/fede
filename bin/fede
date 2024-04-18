@@ -6,6 +6,7 @@ def show_help
   puts 'Usage: fede <config_file> <data_dir> [mode]'
   puts '  modes:'
   puts '    generate: generate feed from scratch'
+  puts '    append-available: append the items that have the audio files present'
   puts '    append[-n]: appends the last -n items to the end of the feed, default is 1'
   puts '        example: fede config_file data_dir append-3 (append last 3 items)'
   exit

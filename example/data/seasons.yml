@@ -1,3 +1,9 @@
+# this is the how the seasons file should look like
+# note that we are using three optional parameters here,
+# img, details and hide
+# if img is not present, the logo will be used
+# if details is not present, the description is just the desc field
+# if hide is set to true, the episode won't be on the feed
 - season_name: season 1
   episodes:
     - episode_name: Episode One
@@ -7,12 +13,10 @@
       url: /episodes/episode-one.mp3
       desc: First episode (boring) description,
         this is the subtitle for the episode basically, no html tags here bro
-      yt-link: https://www.youtube.com/watch?v=dQw4w9WgXcQ
-      deezer: https://deezer.page.link/EfgJJTVYMpVdnKXy5
-      spotify: https://open.spotify.com/track/4PTG3Z6ehGkBFwjybzWkR8?si=a9dd0641f9334fd9
       img: /images/eps/episode-one.jpg
       details: "Extra info, this plus the desc field is the full description for your
         episode. Feel free to add <a> tags here, Fede will not strip those"
+
 - season_name: season 2
   episodes:
     - episode_name: Second Episode One
@@ -22,9 +26,15 @@
       url: /episodes/second-episode-one.mp3
       desc: "Second first episode (boring) description,
         this is the subtitle for the episode basically, no html tags here bro"
-      yt-link: https://www.youtube.com/watch?v=dQw4w9WgXcQ
-      deezer: https://deezer.page.link/EfgJJTVYMpVdnKXy5
-      spotify: https://open.spotify.com/track/4PTG3Z6ehGkBFwjybzWkR8?si=a9dd0641f9334fd9
       img: /images/eps/second-episode-one.jpg
       details: "Extra info, this plus the desc field is the full description for your
         episode. Feel free to add <a> tags here, Fede will not strip those"
+
+    - episode_name: Site Exclusive Episode
+      hide: true # the hide parameter will prevent this episode from being in the feed
+      duration: 01:25:16
+      bytes_length: 654234
+      pub_date: Wed, 31 Aug 2022 21:45:00 +0000
+      url: /episodes/exclusive-episode.mp3
+      desc: "This episode is exclusive to our website, it won't show on the feed"
+      img: /images/eps/second-episode-one.jpg

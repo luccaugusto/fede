@@ -1,15 +1,53 @@
+# You can use these settings outside of podcast, in case you want
+# to use them in the podcast and in the site. Overwrite them by
+# setting them inside podcast
+title: Sauna Talks Website
+email: opapodesauna@gmail.com
+short_description: A very moist *wink *wink conversation
+description: >-
+  In the Sauna, part of the Sauna. In the Sauna, part of the Sauna.
+  In the Sauna, part of the Sauna. In the Sauna, part of the Sauna.
+  In the Sauna...
+url: "https://pds.luccaaugusto.xyz"
+
+# what is inside podcast won't affect other configs
+# if you're using it with other application, like jekyll, allowing for
+# a single config file
 podcast:
+  title: Sauna Talks # this will overwrite the global title settings
+  logo: "/images/pds-logo.jpg"
   managing_editor: 'Lucca Augusto'
+  copyright: 'all rights reserved'
   editor_email: 'lucca@luccaaugusto.xyz'
   datetime_format_string: '%a, %d %b %Y %H:%M:%S %z'
   author: 'Papo De Sauna'
   language: 'pt-BR'
-  keywords: "sauna, entretenimento, humor, filosofia"
+
+  # itunes keywords
+  keywords: "sauna, entertainment, comedy, philosophy"
+
+  # output feed to this file in the current directory
   feed_file: 'fede.xml'
+
+  # specify in episode_data and season_data which files
+  # in the <data> dir will be parsed
+
+  # all files in this array will be parsed as a plain list of episodes
   episode_data:
     - monologues
+
+  # all files in this array will be parsed as a list of seasons each
+  # containing a list of episodes
   season_data:
     - seasons
-  episode_name_attribute: episode_name
-  season_name_attribute: season_name
-  season_episode_list_attribute: episodes
+
+  # data description configs
+  # Change this to whatever you want to name the fields in your data files
+  ep_name: episode_name
+  ep_pub_date: pub_date
+  ep_url: url
+  ep_desc: desc
+  ep_img: img
+  ep_details: details
+  season_name: season_name
+  season_episode_list: episodes
