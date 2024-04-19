@@ -8,7 +8,7 @@ class Fede
     elsif mode == 'append-available'
       append_available
     else
-      puts "Invalid mode #{mode}. Valid modes are 'generate' or 'append'"
+      puts "\tFEDE ERROR:Invalid mode #{mode}. Valid modes are 'generate' or 'append'"
     end
   rescue StandardError => e
     puts e
