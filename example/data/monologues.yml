@@ -4,8 +4,10 @@
 # episode files at runtime. If you're running this in a CICD pipeline
 # chances are you don't, so it's more flexible to just use these
 # attributes here
+#
+# Make sure that duration is quoted as it contains ':'
 - episode_name: "First Monologue"
-  duration: 00:29:40
+  duration: "00:29:40"
   bytes_length: 42069
   pub_date: Tue, 08 Sep 2020 14:00:00 +0000
   url: /monologos/first-monologue.mp3
@@ -13,7 +15,7 @@
     pretty cool if you ask me :)"
 
 - episode_name: "Second Monologue"
-  duration: 00:42:00
+  duration: "00:42:00"
   bytes_length: 321413
   pub_date: Tue, 15 Sep 2020 14:00:00 +0000
   url: /monologos/second-monologue.mp3

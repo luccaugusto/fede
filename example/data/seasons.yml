@@ -4,10 +4,12 @@
 # if img is not present, the logo will be used
 # if details is not present, the description is just the desc field
 # if hide is set to true, the episode won't be on the feed
+#
+# Make sure that duration is quoted as it contains ':'
 - season_name: season 1
   episodes:
     - episode_name: Episode One
-      duration: 01:39:22
+      duration: "01:39:22"
       bytes_length: 984321
       pub_date: Mon, 29 Aug 2022 21:45:00 +0000
       url: /episodes/episode-one.mp3
@@ -25,7 +27,7 @@
 - season_name: season 2
   episodes:
     - episode_name: Second Episode One
-      duration: 01:05:36
+      duration: "01:05:36"
       bytes_length: 1235432
       pub_date: Tue, 30 Aug 2022 21:45:00 +0000
       url: /episodes/second-episode-one.mp3
@@ -37,7 +39,7 @@
 
     - episode_name: Site Exclusive Episode
       hide: true # the hide parameter will prevent this episode from being in the feed
-      duration: 01:25:16
+      duration: "01:25:16"
       bytes_length: 654234
       pub_date: Wed, 31 Aug 2022 21:45:00 +0000
       url: /episodes/exclusive-episode.mp3
